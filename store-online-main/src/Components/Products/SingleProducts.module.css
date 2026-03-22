@@ -1,0 +1,101 @@
+.containerFooter {
+  background-color: #2d2b2b;
+  color: #fff;
+  font-family: 'Cairo', sans-serif;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 60px 20px 40px;
+  gap: 30px;
+}
+
+.section {
+  flex: 1 1 200px;
+  min-width: 180px;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.section h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.section p,
+.section a {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.8;
+  text-decoration: none;
+  display: block;
+}
+
+.section a:hover {
+  color: #fff;
+}
+
+.socialicons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.socialicons a {
+  color: #fff;
+  font-size: 16px;
+  background-color: #865e5e;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.socialicons a:hover {
+  background-color: #f63;
+}
+
+.footerBottom {
+  border-top: 1px solid #333;
+  padding: 20px 0;
+  background-color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footerBottom p {
+  font-size: 13px;
+  color: #aaa;
+  margin: 10px 0;
+}
+
+.paymentMethods {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.paymentIcon {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
