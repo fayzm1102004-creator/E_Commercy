@@ -24,7 +24,6 @@ function Spicalproduct({ featured, productfet }) {
   const navigate=useNavigate()
   const[cureentIndex,setcureentIndex]=useState(0)
   const[selectType,setselectType]=useState("featured")
-const selectcat=["electronics","women's clothing","men's clothing"]
 const electronicsProduct=productfet.filter(product=>product.category==='electronics') 
 const womenProduct=productfet.filter(product=>product.category==="women's clothing") 
 const menProduct=productfet.filter(product=>product.category==="men's clothing") 
