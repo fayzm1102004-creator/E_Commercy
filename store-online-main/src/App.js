@@ -4,13 +4,13 @@ import HomeComponent from "./Routes/HomeComponent";
 import AboutComponent from "./Routes/AboutComponent";
 import ProductsComponent from "./Routes/ProductsComponent";
 import ContactComponent from "./Routes/ContactComponent";
+import BlogComponent from "./Routes/BlogComponent";
 import { Route, Routes } from "react-router-dom";
 import SingleProduct from "./Components/Products/SingleProduct";
 import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Components/Products/Cart";
 import axios from 'axios';
 import Promo from './Components/lodaing/Promo';
-import AutProvider from "./Context/ContextAuth";
 import Login from "./Components/Auth/login/Login";
 import Register from "./Components/Auth/register/Register";
 import Profile from "./Components/Auth/Profile/Profile";
@@ -40,11 +40,10 @@ const App = () => {
   }, [cart]);
 
   useEffect(() => {
-    axios.get('https://fakestoreapi.com/products' )
+    axios.get('https://fakestoreapi.com/products')
       .then((res) => {
         setProductfet(res.data);
         const randomproduct = res.data.sort(() => 0.4 - Math.random());
-        console.log(randomproduct)
         const top5 = randomproduct.slice(0, 4);
         const uniqueCategories = [...new Set(res.data.map(product => product.category))];
         setCategories(uniqueCategories);
@@ -56,41 +55,25 @@ const App = () => {
   return (
     <>
       <Promo />
-      <Navbar element={<AutProvider>
-<Navbar/>
+      <Navbar setCart={setCart} cart={cart} cartCount={cart.length} toggleCart={() => setShowCart(!showCart)} />
 
-      </AutProvider>} setCart={setCart} cart={cart} cartCount={cart.length} toggleCart={() => setShowCart(!showCart) } />
-      
       <Routes>
-        <Route path="/" element={ <HomeComponent featured={featured} categories={categories} productfet={productfet} />} />
+        <Route path="/" element={<HomeComponent featured={featured} categories={categories} productfet={productfet} />} />
         <Route path="/Home" element={<HomeComponent featured={featured} categories={categories} productfet={productfet} />} />
         <Route path="/about" element={<AboutComponent />} />
+        <Route path="/blog" element={<BlogComponent />} />
         <Route path="/products" element={<ProductsComponent setCart={setCart} productfet={productfet} />} />
         <Route path="/contact" element={<ContactComponent />} />
         <Route path="/products/:welcome" element={<SingleProduct />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
-        <Route path="/login" element={<AutProvider>
-<Login/>
-
-</AutProvider>} />
-
-
-
-        <Route path="/Register" 
-        
-        element={<AutProvider><Register/></AutProvider>}/>
-<Route path="/Profile" element={<AutProvider>
-<Profile/>
-</AutProvider>}
-
-/>
+        <Route path="/login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
 
       {showCart && (
         <Cart cart={cart} setCart={setCart} onClose={() => setShowCart(false)} />
       )}
-
-
     </>
   );
 };

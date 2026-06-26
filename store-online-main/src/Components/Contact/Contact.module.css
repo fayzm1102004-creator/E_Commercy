@@ -1,110 +1,211 @@
 .Contact {
-    width: 100%;
-    min-height: 100vh;
-    margin-top: 60px;
-    padding: 30px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f2f2f2;
-    flex-direction: column;
-    gap: 50px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #f8f9fa;
+  flex-direction: column;
+  gap: 40px;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form {
-    width: 100%;
-    max-width: 700px;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    border: 1px solid #e0e0e0;
+  width: 100%;
+  max-width: 550px;
+  background: #ffffff;
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #e0e0e0;
+  animation: slideUp 0.5s ease-out;
 }
 
-.form input,
-.form textarea {
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.form input:focus,
-.form textarea:focus {
-    border-color: #000B58;
-    box-shadow: 0 0 10px rgba(0, 11, 88, 0.2);
+.formHeader {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.form textarea {
-    height: 150px;
-    resize: none;
+.iconCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ff324d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  color: white;
+  box-shadow: 0 6px 20px rgba(255, 50, 77, 0.35);
+  transition: transform 0.3s ease;
 }
 
-.form button {
-    cursor: pointer;
-    padding: 12px 30px;
-    background: #000B58;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 8px;
-    transition: 0.3s ease;
+.iconCircle:hover {
+  transform: scale(1.08);
 }
 
-.form button:hover {
-    background: #003161;
+.formHeader h2 {
+  color: #000B58;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 6px;
 }
 
-/* الكومنت */
-.msg {
-    width: 100%;
-    max-width: 700px;
-    background: white;
-    padding: 20px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    transition: 0.3s ease;
-    margin-bottom: 30px;
+.formHeader p {
+  color: #888;
+  font-size: 14px;
+  margin: 0;
 }
 
-.msg:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+.inputGroup {
+  position: relative;
+  margin-bottom: 15px;
 }
 
-.msg h1 {
-    font-size: 20px;
-    color: #000B58;
-    margin: 0 0 5px 0;
+.inputIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 17px;
+  pointer-events: none;
+  transition: color 0.3s;
 }
 
-.msg h4 {
-    font-size: 14px;
-    color: #666;
-    margin: 0 0 10px 0;
+.inputField,
+.textareaField {
+  width: 100%;
+  padding: 14px 14px 14px 44px;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+  color: #333;
 }
 
-.msg hr {
-    border: none;
-    height: 1px;
-    background-color: #ddd;
-    margin: 10px 0;
+.textareaField {
+  padding-left: 14px;
+  height: 140px;
+  resize: vertical;
 }
 
-.msg p {
-    font-size: 16px;
-    color: #444;
-    line-height: 1.6;
-    margin: 0;
-    text-shadow: none;
+.inputField:focus,
+.textareaField:focus {
+  border-color: #000B58;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 11, 88, 0.1);
+}
+
+.inputField:focus + .inputIcon,
+.inputGroup:focus-within .inputIcon {
+  color: #000B58;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 14px;
+  background: #000B58;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submitButton:hover {
+  background: #ff324d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 50, 77, 0.3);
+}
+
+.messagesContainer {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.msgCard {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+.msgCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.msgHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.msgAvatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #000B58;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.msgHeader h3 {
+  margin: 0 0 2px 0;
+  font-size: 17px;
+  color: #000B58;
+}
+
+.msgHeader span {
+  font-size: 13px;
+  color: #888;
+}
+
+.msgDate {
+  margin-left: auto;
+  font-size: 12px;
+  color: #aaa;
+  background: #f5f5f5;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.msgBody p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
 }

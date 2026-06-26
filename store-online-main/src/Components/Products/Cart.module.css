@@ -146,3 +146,235 @@
 .checkoutBtn:hover {
   background-color: #e9203b;
 }
+
+/* Checkout Modal Styles */
+.checkoutOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+}
+
+.checkoutModal {
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  padding: 35px 30px;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  animation: modalFadeIn 0.4s ease;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.closeModal {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.closeModal:hover {
+  color: #ff324d;
+}
+
+.modalTitle {
+  font-size: 24px;
+  color: #000B58;
+  margin-top: 0;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.invoiceSummary {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: 1px solid #eee;
+}
+
+.invoiceRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 15px;
+}
+
+.invoiceTotal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000B58;
+}
+
+.paymentSection h4 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.paymentOption {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.paymentOption input {
+  margin-right: 15px;
+  accent-color: #ff324d;
+}
+
+.payIcon {
+  color: #888;
+  margin-right: 12px;
+  transition: color 0.3s ease;
+}
+
+.paymentOption span {
+  font-size: 15px;
+  color: #444;
+  font-weight: 500;
+}
+
+.paymentOption:hover {
+  border-color: #ddd;
+}
+
+.paymentOption.selected {
+  border-color: #000B58;
+  background: #fcfcfc;
+}
+
+.paymentOption.selected .payIcon {
+  color: #000B58;
+}
+
+.confirmBtn {
+  width: 100%;
+  padding: 15px;
+  background: #ff324d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.confirmBtn:hover {
+  background: #e0223d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 50, 77, 0.3);
+}
+
+.successMessage {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.successIcon {
+  width: 70px;
+  height: 70px;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+  animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleUp {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.successMessage h3 {
+  color: #000B58;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.successMessage p {
+  color: #666;
+  font-size: 15px;
+}
+
+.qtyBtn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.qtyBtn:hover {
+  background: #000B58;
+  color: #fff;
+  border-color: #000B58;
+}
+
+.qtySpan {
+  font-size: 15px;
+  font-weight: 600;
+  width: 20px;
+  text-align: center;
+}
+
+.removeBtn {
+  color: #ff324d;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.removeBtn:hover {
+  color: #d11a32;
+}

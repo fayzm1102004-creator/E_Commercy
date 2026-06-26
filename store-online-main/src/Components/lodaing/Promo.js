@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Promo.module.css';
 import popup from '../../images/popup_img.jpg';
+import { ContextAuth } from '../../Context/ContextAuth';
 
 function Promo() {
+  const { user } = useContext(ContextAuth);
   const [isVisible, setIsVisible] = useState(false);
   const [dontShow, setDontShow] = useState(false);
 
   useEffect(() => {
-    const closed = localStorage.getItem('promoPopupClosed');
-    if (!closed) {
-      setIsVisible(true);
+    // Only show popup if user IS logged in
+    if (user) {
+      const closed = localStorage.getItem('promoPopupClosed');
+      if (!closed) {
+        setIsVisible(true);
+      }
+    } else {
+      // If user is not logged in, hide the popup
+      setIsVisible(false);
     }
-  }, []);
+  }, [user]);
 
   const handleClose = () => {
     if (dontShow) {
@@ -50,7 +58,7 @@ function Promo() {
               type="checkbox"
               onChange={(e) => setDontShow(e.target.checked)}
             />
-            Don’t show this popup again
+            Don't show this popup again
           </label>
         </div>
       </div>

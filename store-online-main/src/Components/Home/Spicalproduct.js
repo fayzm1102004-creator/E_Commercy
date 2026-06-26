@@ -24,12 +24,7 @@ function Spicalproduct({ featured, productfet }) {
   const navigate=useNavigate()
   const[cureentIndex,setcureentIndex]=useState(0)
   const[selectType,setselectType]=useState("featured")
-  console.log('fuee', featured)
-  console.log('fuee', productfet)
-  
-
 const selectcat=["electronics","women's clothing","men's clothing"]
-console.log(selectcat)
 const electronicsProduct=productfet.filter(product=>product.category==='electronics') 
 const womenProduct=productfet.filter(product=>product.category==="women's clothing") 
 const menProduct=productfet.filter(product=>product.category==="men's clothing") 
@@ -73,14 +68,10 @@ jop:"designer"
 
 ]
 useEffect(()=>{
-
 const interval=setInterval(()=>{
-
 setcureentIndex(prevIndex=>(prevIndex + 1)%client.length)
-
-
-return ()=> clearInterval(interval)    
 },4000)
+return ()=> clearInterval(interval)
 },[client.length])
 const changeCient=()=>{
 const nextIndex=(cureentIndex+1)%client.length

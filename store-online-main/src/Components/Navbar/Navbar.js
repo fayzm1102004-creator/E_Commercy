@@ -10,12 +10,11 @@ import { CgProfile } from "react-icons/cg";
 import { IoIosLogIn } from "react-icons/io";
 import LogoDark from '../../images/logo_dark.png';
 
-function Navbar({ cartCount, toggleCart, cart,setCart }) {
+function Navbar({ cartCount, toggleCart, cart, setCart }) {
 
-  const{user}=useContext(ContextAuth)
-  const navgate=useNavigate()
+  const { user } = useContext(ContextAuth);
+  const navigate = useNavigate();
   const [openDrop, setOpenDrop] = useState(false);
-  
 
   const [menuIcon, setMenuIcon] = useState(window.innerWidth <= 850);
   const [bigmenu, setBigMenu] = useState(false);
@@ -26,7 +25,6 @@ function Navbar({ cartCount, toggleCart, cart,setCart }) {
     setMenuIcon(isMobile);
     if (!isMobile) setBigMenu(false);
   };
-console.log("From Navbar, user:", user);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -39,37 +37,32 @@ console.log("From Navbar, user:", user);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  
-const incrementQty = (id) => {
-  setCart(prev =>
-    prev.map(item =>
-      item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
-    )
-  );
-};
+  const incrementQty = (id) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+      )
+    );
+  };
 
-const decrementQty = (id) => {
-  setCart(prev =>
-    prev.map(item =>
-      item.id === id && (item.quantity || 1) > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    )
-  );
-};
+  const decrementQty = (id) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.id === id && (item.quantity || 1) > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
 
   const toggleMenu = () => setBigMenu(!bigmenu);
 
   return (
     <header>
       <nav>
-        
-      
-
         <div className='down-nav' style={{ top: scroll >= 1 ? '0px' : undefined }}>
           <div className='down-nav-1'>
             <img src={LogoDark} alt='logo' />
-            
           </div>
           <div className='menu-toggle'>
             {menuIcon && (
@@ -87,20 +80,14 @@ const decrementQty = (id) => {
 
           <div className='cart'>
             <div className='carticon'>
-
-              {
-user?
-<>
-<CgProfile color='black' size={25} cursor={'pointer'}  onClick={()=>navgate('/Profile')}/>
-<p>{user.fristname}</p>
-</>
-
-:
-
-
-              <IoIosLogIn  color='black' size={25}  cursor={'pointer'} onClick={()=>navgate('./login')}/>
-              }
-
+              {user ? (
+                <>
+                  <CgProfile color='black' size={25} cursor={'pointer'} onClick={() => navigate('/Profile')} />
+                  <p>{user.fristname}</p>
+                </>
+              ) : (
+                <IoIosLogIn color='black' size={25} cursor={'pointer'} onClick={() => navigate('/login')} />
+              )}
             </div>
 
             <div
@@ -108,31 +95,31 @@ user?
               onMouseEnter={() => setOpenDrop(true)}
               onMouseLeave={() => setOpenDrop(false)}
             >
-              <CiShoppingCart color='black' size={25}  onClick={()=>navgate('./cart')}/>
+              <CiShoppingCart color='black' size={25} onClick={() => navigate('/cart')} />
               <span className='counter'>{cartCount}</span>
 
               {openDrop && cartCount > 0 && (
                 <div className='mini-cart-box'>
                   {cart.map((item) => (
-  <div key={item.id} className='mini-cart-item'>
-    <img src={item.image} alt={item.title} />
-    <div>
-      <p className='mini-title'>{item.title}</p>
-      <p className='mini-price'>${item.price} × {item.quantity || 1}</p>
-      <div className='qty-controls'>
-        <button onClick={() => decrementQty(item.id)}>-</button>
-        <span style={{ margin: '0 10px' }}>{item.quantity || 1}</span>
-        <button onClick={() => incrementQty(item.id)}>+</button>
-      </div>
-    </div>
-  </div>
-))}
+                    <div key={item.id} className='mini-cart-item'>
+                      <img src={item.image} alt={item.title} />
+                      <div>
+                        <p className='mini-title'>{item.title}</p>
+                        <p className='mini-price'>${item.price} × {item.quantity || 1}</p>
+                        <div className='qty-controls'>
+                          <button onClick={() => decrementQty(item.id)}>-</button>
+                          <span style={{ margin: '0 10px' }}>{item.quantity || 1}</span>
+                          <button onClick={() => incrementQty(item.id)}>+</button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
 
                   <NavLink to="/cart">
-  <button className='mini-cart-btn'>
-    عرض السلة
-  </button>
-</NavLink>
+                    <button className='mini-cart-btn'>
+                      عرض السلة
+                    </button>
+                  </NavLink>
                 </div>
               )}
             </div>
